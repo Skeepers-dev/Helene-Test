@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Corte Inglés Vista Alegre — Analyse des Avis Clients</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0073FF;
+  --blue-dark:#0058CC;
+  --blue-light:#E8F1FF;
+  --blue-mid:#3391FF;
+  --white:#FFFFFF;
+  --cream:#F8FAFF;
+  --text:#0A0F1E;
+  --text-mid:#3D4459;
+  --text-muted:#6B7394;
+  --border:#D8E3F5;
+  --card-shadow:0 2px 20px rgba(0,115,255,0.08);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:1080px;margin:0 auto;padding:0 2rem}
+.section{padding:80px 0}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.nav-brand{
+  display:flex;align-items:center;gap:14px;
+}
+.nav-logo-eci{
+  height:32px;display:flex;align-items:center;
+}
+.eci-logo-svg{height:32px;width:auto;}
+.nav-sep{width:1px;height:28px;background:var(--border);}
+.nav-title{
+  font-size:13px;font-weight:500;color:var(--text-mid);letter-spacing:0.01em;
+}
+.nav-title span{color:var(--text);font-weight:600;}
+.nav-links{display:flex;align-items:center;gap:8px;}
+.nav-link{
+  font-size:13px;font-weight:500;color:var(--text-mid);padding:6px 12px;
+  border-radius:8px;transition:all 0.2s;
+}
+.nav-link:hover{background:var(--blue-light);color:var(--blue);}
+.nav-cta{
+  background:var(--blue);color:#fff;
+  font-size:13px;font-weight:600;
+  padding:8px 18px;border-radius:100px;
+  transition:all 0.2s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,115,255,0.35);}
+
+/* ── HERO ── */
+.hero{
+  background:var(--blue);
+  padding:90px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:rgba(255,255,255,0.07);pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-180px;right:-80px;
+  width:500px;height:500px;border-radius:50%;
+  background:rgba(255,255,255,0.05);pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;text-align:center;}
+.hero-logos{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  margin-bottom:36px;
+}
+.hero-logo-box{
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
+  border-radius:14px;padding:10px 20px;
+  display:flex;align-items:center;justify-content:center;
+  min-width:120px;min-height:48px;
+}
+.hero-logo-sep{color:rgba(255,255,255,0.3);font-size:20px;}
+.hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);
+  border-radius:100px;padding:6px 18px;
+  font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:rgba(255,255,255,0.9);margin-bottom:28px;
+}
+.hero-label-dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(2.6rem,5.5vw,4.4rem);
+  line-height:1.1;color:var(--white);font-weight:400;
+  margin-bottom:20px;
+}
+.hero h1 em{font-style:italic;opacity:0.82;}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.72);max-width:540px;margin:0 auto 52px;line-height:1.65;}
+.hero-stats{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:0;
+  border-top:1px solid rgba(255,255,255,0.15);padding-top:40px;margin-top:40px;
+}
+.hero-stat{flex:1;min-width:150px;padding:0 24px;border-right:1px solid rgba(255,255,255,0.15);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-n{
+  font-family:'IBM Plex Mono',monospace;font-size:2.5rem;font-weight:500;
+  color:#fff;line-height:1;letter-spacing:-0.03em;
+}
+.hero-stat-l{font-size:12px;color:rgba(255,255,255,0.58);margin-top:7px;letter-spacing:0.04em;}
+
+/* ── SECTION LABELS ── */
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px;
+}
+.section-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--blue);border-radius:2px;}
+.section-title{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.15;font-weight:400;
+  color:var(--text);margin-bottom:12px;
+}
+.section-sub{font-size:15px;color:var(--text-muted);max-width:560px;line-height:1.7;}
+
+/* ── RATINGS ── */
+.ratings-section{background:var(--white);border-bottom:1px solid var(--border);}
+.rating-layout{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:center;}
+.score-block{text-align:center;}
+.big-num{
+  font-family:'IBM Plex Mono',monospace;font-size:5.5rem;font-weight:400;
+  line-height:1;color:var(--blue);letter-spacing:-0.05em;
+}
+.big-num span{font-size:2rem;color:var(--text-muted);}
+.stars{display:flex;justify-content:center;gap:3px;margin:10px 0 6px;}
+.star-full{color:#FFC107;font-size:20px;}
+.star-half{color:#FFC107;font-size:20px;opacity:0.6;}
+.score-label{font-size:11px;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;}
+.score-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+.dist-list{display:grid;gap:10px;}
+.dist-row{display:grid;grid-template-columns:32px 1fr 52px 52px;align-items:center;gap:10px;}
+.dist-label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-muted);text-align:right;}
+.dist-track{background:#EEF3FF;border-radius:3px;height:8px;overflow:hidden;}
+.dist-fill{height:8px;border-radius:3px;transition:width 1.4s cubic-bezier(.4,0,.2,1);width:0;}
+.dist-n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-mid);text-align:right;}
+.dist-p{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);text-align:right;}
+.sent-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px;}
+.sent-chip{padding:18px 16px;border-radius:12px;text-align:center;}
+.sent-chip.neg{background:#FEF0F0;border:1px solid #FBBFBF;}
+.sent-chip.neu{background:#FFFBEB;border:1px solid #FDE68A;}
+.sent-n{font-family:'IBM Plex Mono',monospace;font-size:1.8rem;font-weight:500;line-height:1;margin-bottom:5px;}
+.sent-n.neg{color:#DC2626;}
+.sent-n.neu{color:#D97706;}
+.sent-l{font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;}
+.sent-l.neg{color:#DC2626;}
+.sent-l.neu{color:#D97706;}
+.context-note{
+  margin-top:24px;padding:16px 20px;
+  background:var(--blue-light);border-radius:12px;border:1px solid rgba(0,115,255,0.15);
+  font-size:13px;color:var(--text-mid);line-height:1.6;
+}
+.context-note strong{color:var(--blue);}
+
+/* ── SUJET N°1 ── */
+.topic-section{background:var(--cream);}
+.topic-card{
+  background:var(--white);border-radius:20px;
+  border:1px solid var(--border);
+  padding:48px;
+  box-shadow:var(--card-shadow);
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.topic-pct{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:7rem;font-weight:500;color:var(--blue);
+  line-height:1;letter-spacing:-0.04em;
+}
+.topic-pct-label{font-size:14px;color:var(--text-muted);margin-top:6px;font-weight:500;}
+.topic-name{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(1.5rem,2.5vw,2.1rem);line-height:1.25;color:var(--text);
+  margin-bottom:16px;font-weight:400;
+}
+.topic-desc{font-size:15px;color:var(--text-mid);line-height:1.7;}
+.subtopic-list{display:grid;gap:10px;margin-top:32px;}
+.subtopic-row{
+  background:var(--cream);border-radius:10px;padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid var(--border);
+}
+.subtopic-name{font-size:14px;font-weight:500;color:var(--text);}
+.subtopic-pct{
+  font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:500;
+  color:var(--blue);background:var(--blue-light);
+  padding:3px 10px;border-radius:100px;
+}
+
+/* ── FRUSTRATIONS ── */
+.frustrations-section{background:var(--white);border-bottom:1px solid var(--border);}
+.frustration-grid{display:grid;gap:20px;margin-top:40px;}
+.frustration-card{
+  border-radius:16px;border:1px solid var(--border);
+  padding:32px;background:var(--white);
+  box-shadow:var(--card-shadow);
+  position:relative;overflow:hidden;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.frustration-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,115,255,0.12);}
+.frustration-card::before{
+  content:'';position:absolute;top:0;left:0;
+  width:4px;height:100%;background:var(--blue);border-radius:4px 0 0 4px;
+}
+.frust-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:16px;}
+.frust-num{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;
+  color:var(--blue);background:var(--blue-light);
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.frust-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.frust-cause{
+  font-size:13px;color:var(--text-muted);line-height:1.6;
+  padding:10px 14px;background:var(--cream);border-radius:8px;
+  border-left:3px solid var(--border);margin-bottom:16px;
+}
+.frust-cause strong{color:var(--text-mid);}
+.frust-verbatim{
+  background:var(--blue-light);border-radius:12px;
+  padding:18px 20px;font-size:14px;color:var(--text-mid);
+  line-height:1.65;font-style:italic;position:relative;
+}
+.frust-verbatim::before{
+  content:'\201C';font-family:'DM Serif Display',Georgia,serif;
+  font-size:3rem;color:var(--blue);opacity:0.3;
+  position:absolute;top:-4px;left:12px;line-height:1;
+}
+.frust-verbatim p{padding-left:8px;}
+.frust-author{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:12px;
+}
+.frust-name{font-size:12px;font-weight:600;color:var(--text-mid);font-style:normal;}
+.frust-link{
+  font-size:12px;font-weight:600;color:var(--blue);
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;background:#fff;border:1px solid var(--border);
+  border-radius:100px;transition:all 0.2s;font-style:normal;
+}
+.frust-link:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+.frust-link svg{width:12px;height:12px;}
+
+/* ── SATISFACTION ── */
+.satisfaction-section{background:var(--cream);}
+.satisfaction-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;}
+.satis-card{
+  background:var(--white);border-radius:16px;padding:28px;
+  border:1px solid var(--border);box-shadow:var(--card-shadow);
+  display:flex;gap:16px;align-items:flex-start;
+  transition:transform 0.2s;
+}
+.satis-card:hover{transform:translateY(-2px);}
+.satis-card:first-child{grid-column:1/-1;}
+.satis-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--blue-light);display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;font-size:20px;
+}
+.satis-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.satis-desc{font-size:14px;color:var(--text-muted);line-height:1.6;}
+
+/* ── CTA / PITCH ── */
+.pitch-section{
+  background:linear-gradient(135deg,var(--blue) 0%,#0058CC 100%);
+  position:relative;overflow:hidden;
+}
+.pitch-section::before{
+  content:'';position:absolute;top:-200px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:rgba(255,255,255,0.06);pointer-events:none;
+}
+.pitch-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.pitch-label{
+  font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.6);margin-bottom:16px;
+}
+.pitch-title{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:clamp(2rem,3.5vw,3rem);color:#fff;font-weight:400;line-height:1.2;
+  margin-bottom:20px;
+}
+.pitch-desc{font-size:16px;color:rgba(255,255,255,0.78);line-height:1.7;margin-bottom:32px;}
+.pitch-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;color:var(--blue);
+  font-size:15px;font-weight:700;
+  padding:14px 28px;border-radius:100px;
+  transition:all 0.25s;
+}
+.pitch-cta:hover{background:var(--blue-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+.pitch-cta svg{width:18px;height:18px;}
+.pitch-features{display:grid;gap:16px;}
+.pitch-feat{
+  display:flex;align-items:flex-start;gap:14px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
+  border-radius:14px;padding:18px 20px;
+}
+.pitch-feat-icon{font-size:22px;flex-shrink:0;}
+.pitch-feat-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px;}
+.pitch-feat-desc{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);padding:32px 0;
+}
+.footer-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{
+  font-family:'DM Serif Display',Georgia,serif;
+  font-size:18px;color:#fff;font-weight:400;
+}
+.footer-brand span{color:rgba(255,255,255,0.5);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:400;display:block;margin-top:2px;}
+.footer-links{display:flex;gap:24px;}
+.footer-link{font-size:13px;color:rgba(255,255,255,0.45);transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.8);}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3);}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  .rating-layout{grid-template-columns:1fr;}
+  .topic-card{grid-template-columns:1fr;}
+  .satisfaction-grid{grid-template-columns:1fr;}
+  .satis-card:first-child{grid-column:1;}
+  .pitch-inner{grid-template-columns:1fr;}
+  .hero-stat{min-width:120px;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <!-- El Corte Inglés SVG Logo inline -->
+        <div class="nav-logo-eci">
+          <svg class="eci-logo-svg" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <rect width="120" height="40" rx="6" fill="#006B3C"/>
+            <text x="8" y="26" font-family="Georgia, serif" font-size="11" fill="white" font-weight="bold">El Corte Inglés</text>
+          </svg>
+        </div>
+        <div class="nav-sep"></div>
+        <div class="nav-title">Rapport d'analyse — <span>Vista Alegre</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#notation" class="nav-link">Notation</a>
+        <a href="#sujet" class="nav-link">Sujet N°1</a>
+        <a href="#frustrations" class="nav-link">Frustrations</a>
+        <a href="#satisfaction" class="nav-link">Satisfaction</a>
+        <a href="#action" class="nav-cta">Passer à l'action →</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Logos -->
+      <div class="hero-logos">
+        <div class="hero-logo-box">
+          <!-- El Corte Inglés simplified logo -->
+          <svg width="110" height="32" viewBox="0 0 110 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="110" height="32" rx="5" fill="rgba(255,255,255,0.15)"/>
+            <rect x="4" y="4" width="24" height="24" rx="3" fill="#fff"/>
+            <text x="6" y="20" font-family="Georgia,serif" font-size="13" fill="#006B3C" font-weight="bold">ECI</text>
+            <text x="34" y="13" font-family="Georgia,serif" font-size="7.5" fill="white" font-weight="bold">El Corte</text>
+            <text x="34" y="24" font-family="Georgia,serif" font-size="7.5" fill="white" font-weight="bold">Inglés</text>
+          </svg>
+        </div>
+        <span class="hero-logo-sep">×</span>
+        <div class="hero-logo-box">
+          <!-- Avis Vérifiés / Skeepers Logo -->
+          <svg width="130" height="32" viewBox="0 0 130 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="130" height="32" rx="5" fill="rgba(255,255,255,0.1)"/>
+            <!-- Shield icon -->
+            <path d="M8 6 L20 6 L20 18 Q20 24 14 27 Q8 24 8 18 Z" fill="#FF6B35" stroke="none"/>
+            <text x="9.5" y="20" font-family="Arial" font-size="9" fill="white" font-weight="bold">✓</text>
+            <!-- Text -->
+            <text x="26" y="13" font-family="Arial,sans-serif" font-size="7" fill="white" font-weight="bold">AVIS</text>
+            <text x="26" y="23" font-family="Arial,sans-serif" font-size="7" fill="white" font-weight="bold">VÉRIFIÉS</text>
+            <text x="62" y="13" font-family="Arial,sans-serif" font-size="6.5" fill="rgba(255,255,255,0.6)">by</text>
+            <text x="62" y="23" font-family="Arial,sans-serif" font-size="7" fill="rgba(255,255,255,0.8)" font-weight="bold">Skeepers</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-label"><span class="hero-label-dot"></span>Analyse · El Corte Inglés Vista Alegre · Madrid</div>
+      <h1>Ce que disent<br>vos clients —<br><em>en chiffres</em></h1>
+      <p class="hero-sub">Analyse structurée de 489 avis négatifs (1-2★) sur 11 872 avis Google — les irritants majeurs, les causes profondes et les opportunités d'action.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="h-total">0</div>
+          <div class="hero-stat-l">Avis 1-2★ analysés</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="h-google">0</div>
+          <div class="hero-stat-l">Avis Google totaux</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="h-avg">0,0</div>
+          <div class="hero-stat-l">Note moyenne Google</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n" id="h-topic">0%</div>
+          <div class="hero-stat-l">Avis sur sujet N°1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOTATION ── -->
+<section class="ratings-section section" id="notation">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Notation</div>
+      <h2 class="section-title">Distribution des avis analysés</h2>
+      <p class="section-sub">489 avis 1 et 2 étoiles exportés depuis Google Maps — représentant la voix des clients insatisfaits.</p>
+    </div>
+
+    <div class="rating-layout" style="margin-top:40px;">
+      <div class="score-block reveal">
+        <div class="big-num">3,8<span>/5</span></div>
+        <div class="stars">
+          <span class="star-full">★</span>
+          <span class="star-full">★</span>
+          <span class="star-full">★</span>
+          <span class="star-full">★</span>
+          <span class="star-half">★</span>
+        </div>
+        <div class="score-label">Note Google officielle</div>
+        <div class="score-sub">sur 11 872 avis totaux</div>
+      </div>
+
+      <div class="reveal">
+        <div class="dist-list">
+          <div class="dist-row">
+            <div class="dist-label">2★</div>
+            <div class="dist-track"><div class="dist-fill" data-pct="50" style="background:#F97316;"></div></div>
+            <div class="dist-n">244</div>
+            <div class="dist-p">49,9%</div>
+          </div>
+          <div class="dist-row">
+            <div class="dist-label">1★</div>
+            <div class="dist-track"><div class="dist-fill" data-pct="50" style="background:#DC2626;"></div></div>
+            <div class="dist-n">245</div>
+            <div class="dist-p">50,1%</div>
+          </div>
+        </div>
+
+        <div class="context-note" style="margin-top:20px;">
+          ⚠️ <strong>Note :</strong> Seuls les avis 1 et 2 étoiles ont été exportés et analysés. La note globale Google de <strong>3,8/5</strong> sur <strong>11 872 avis</strong> reflète l'ensemble des expériences clients, incluant les avis positifs non analysés ici.
+        </div>
+
+        <div class="sent-row">
+          <div class="sent-chip neg">
+            <div class="sent-n neg">245</div>
+            <div class="sent-l neg">Très négatifs (1★)</div>
+          </div>
+          <div class="sent-chip neu">
+            <div class="sent-n neu">244</div>
+            <div class="sent-l neu">Négatifs (2★)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUJET N°1 ── -->
+<section class="topic-section section" id="sujet">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Sujet N°1</div>
+      <h2 class="section-title">Le thème le plus critiqué</h2>
+      <p class="section-sub">Le sujet dominant qui revient dans la grande majorité des avis négatifs analysés.</p>
+    </div>
+
+    <div class="topic-card reveal" style="margin-top:40px;">
+      <div>
+        <div class="topic-pct" id="topic-pct">0%</div>
+        <div class="topic-pct-label">des avis négatifs analysés</div>
+
+        <div class="subtopic-list" style="margin-top:32px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Sous-problèmes identifiés</div>
+          <div class="subtopic-row">
+            <span class="subtopic-name">Prix non compétitifs pour un outlet</span>
+            <span class="subtopic-pct">~45%</span>
+          </div>
+          <div class="subtopic-row">
+            <span class="subtopic-name">Désorganisation & désordre du magasin</span>
+            <span class="subtopic-pct">~35%</span>
+          </div>
+          <div class="subtopic-row">
+            <span class="subtopic-name">Produits démodés / vieux stocks</span>
+            <span class="subtopic-pct">~38%</span>
+          </div>
+          <div class="subtopic-row">
+            <span class="subtopic-name">Articles sales, abîmés ou défectueux</span>
+            <span class="subtopic-pct">~22%</span>
+          </div>
+          <div class="subtopic-row">
+            <span class="subtopic-name">Manque de variété et de tailles</span>
+            <span class="subtopic-pct">~18%</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="topic-name">Manque de valeur réelle de l'Outlet : prix élevés + produits dépassés + mauvaise qualité</div>
+        <p class="topic-desc">Les clients viennent avec l'attente d'un vrai outlet — des marques reconnues à prix réduits. Ils trouvent à la place des vieux stocks démodés, des articles en mauvais état, un espace désorganisé et des prix identiques ou supérieurs à ceux d'Amazon ou du Corte Inglés standard. Cette contradiction fondamentale entre la promesse outlet et la réalité vécue est la source majeure de déception.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FRUSTRATIONS ── -->
+<section class="frustrations-section section" id="frustrations">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Frustrations</div>
+      <h2 class="section-title">Top 5 des frustrations récurrentes</h2>
+      <p class="section-sub">Les irritants majeurs identifiés dans les avis, avec leurs causes profondes et des exemples réels de clients.</p>
+    </div>
+
+    <div class="frustration-grid">
+
+      <!-- F1 -->
+      <div class="frustration-card reveal">
+        <div class="frust-header">
+          <div class="frust-num">01</div>
+          <div>
+            <div class="frust-title">Prix outlet non compétitifs</div>
+          </div>
+        </div>
+        <div class="frust-cause"><strong>Cause profonde :</strong> Les prix ne correspondent pas à l'image d'un outlet — souvent identiques ou supérieurs à ceux du Corte Inglés classique, d'Amazon ou d'autres enseignes. Les remises affichées sont perçues comme artificielles (prix gonflés avant réduction).</div>
+        <div class="frust-verbatim">
+          <p>"Nada de outlec, mentira. Me he comprado hoy una chaqueta NORWAY Softshell de hombre Tykoon 005, precio de 199€ a 99€ y resulta que es el precio oficial también rebajado en la tienda oficial, incluso en Amazon. ¿Donde está el OUTLET? Me siento engañado, estafado. No volveré a comprar aquí nunca más."</p>
+          <div class="frust-author">
+            <span class="frust-name">— Niko .madrid</span>
+            <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURNN28yMVFnEAE!2m1!1s0x0:0xe0569facce13ad8!3m1!1s2@1:CIHM0ogKEICAgIDM7o21Qg%7C%7C?hl=en" target="_blank" class="frust-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir sur Google
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- F2 -->
+      <div class="frustration-card reveal">
+        <div class="frust-header">
+          <div class="frust-num">02</div>
+          <div>
+            <div class="frust-title">Désorganisation & désordre chronique du magasin</div>
+          </div>
+        </div>
+        <div class="frust-cause"><strong>Cause profonde :</strong> Manque criant de personnel pour maintenir l'ordre. Articles mélangés sans logique par taille ou genre. L'espace ressemble à un marché aux puces plutôt qu'à un enseigne premium, créant une expérience d'achat pénible et décourageante.</div>
+        <div class="frust-verbatim">
+          <p>"El peor corte inglés en el que he estado nunca, las prendas de ropa están tan desordenadas que da asco comprar, está todo súper mal cuidado y las prendas parece que están todas usadas. Un sitio muy sucio, me daría vergüenza tenerlo así."</p>
+          <div class="frust-author">
+            <span class="frust-name">— Laura Gonzalez</span>
+            <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaeEpXaHpRRRAB!2m1!1s0x0:0xe0569facce13ad8!3m1!1s2@1:CIHM0ogKEICAgIDZxJWhzQE%7C%7C?hl=en" target="_blank" class="frust-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir sur Google
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- F3 -->
+      <div class="frustration-card reveal">
+        <div class="frust-header">
+          <div class="frust-num">03</div>
+          <div>
+            <div class="frust-title">Qualité et état des produits inacceptables</div>
+          </div>
+        </div>
+        <div class="frust-cause"><strong>Cause profonde :</strong> Les produits proviennent des invendus et retours d'autres centres. Articles vieux de plusieurs saisons, sales, déchirés, avec des peluchages ou des défauts — et vendus quand même à des prix élevés. Contradiction totale avec l'image de marque Corte Inglés.</div>
+        <div class="frust-verbatim">
+          <p>"Todo super antiguo, no está colocado por tallas, todo mezclado y hay ropa con manchas y sucia, llena de polvo y pelusas. Un desastre de sitio para ser del Corte Inglés, no me extraña que cierren centros. Calidad precio es malísima."</p>
+          <div class="frust-author">
+            <span class="frust-name">— Afrika Rodriguez</span>
+            <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURKOU5pMFlBEAE!2m1!1s0x0:0xe0569facce13ad8!3m1!1s2@1:CIHM0ogKEICAgIDJ9Ni0YA%7C%7C?hl=en" target="_blank" class="frust-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir sur Google
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- F4 -->
+      <div class="frustration-card reveal">
+        <div class="frust-header">
+          <div class="frust-num">04</div>
+          <div>
+            <div class="frust-title">Personnel mal formé, désagréable ou introuvable</div>
+          </div>
+        </div>
+        <div class="frust-cause"><strong>Cause profonde :</strong> Sous-effectif chronique — impossible de trouver quelqu'un pour se faire aider. Le personnel présent est perçu comme démotivé, impoli ou irrespectueux. Les agents de sécurité sont particulièrement ciblés pour leur attitude conflictuelle envers les clients.</div>
+        <div class="frust-verbatim">
+          <p>"Cajeros, vendedores, guardias de seguridad, en fin todo el personal. ¡AMARGADOS Y GROSEROS! La actitud de esta gente da mucha energía negativa y hace que no quieras comprar y volver. Urge un curso de relaciones humanas para toda esta gente."</p>
+          <div class="frust-author">
+            <span class="frust-name">— DR. GUITAR</span>
+            <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURldzZuQVN3EAE!2m1!1s0x0:0xe0569facce13ad8!3m1!1s2@1:CIHM0ogKEICAgIDew6nASw%7C%7C?hl=en" target="_blank" class="frust-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir sur Google
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- F5 -->
+      <div class="frustration-card reveal">
+        <div class="frust-header">
+          <div class="frust-num">05</div>
+          <div>
+            <div class="frust-title">Services en ligne & Click and Car défaillants</div>
+          </div>
+        </div>
+        <div class="frust-cause"><strong>Cause profonde :</strong> Système informatique obsolète et gestion des stocks online incohérente. Commandes acceptées sans stock disponible, annulées sans préavis, délais non respectés. Le service Click & Car ne sait pas traiter les remboursements ni les retours — générant frustration et perte de confiance.</div>
+        <div class="frust-verbatim">
+          <p>"Llevo más de 45 minutos en click & car para la devolución de una compra online hecha hace 48h que no va a llegar y no tienen ni idea de cómo hacerlo, cola de gente esperando, 3 trabajadoras intentando no sé qué en el sistema y aún sin resolver."</p>
+          <div class="frust-author">
+            <span class="frust-name">— Dayrisse Trejo</span>
+            <a href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURYcUxyUVRnEAE!2m1!1s0x0:0xe0569facce13ad8!3m1!1s2@1:CIHM0ogKEICAgIDXqLrQTg%7C%7C?hl=en" target="_blank" class="frust-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Voir sur Google
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SATISFACTION ── -->
+<section class="satisfaction-section section" id="satisfaction">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Satisfaction</div>
+      <h2 class="section-title">Top 5 des moteurs de satisfaction</h2>
+      <p class="section-sub">Les points positifs mentionnés même dans les avis négatifs — des signaux faibles mais précieux pour comprendre ce qui fonctionne.</p>
+    </div>
+
+    <div class="satisfaction-grid">
+      <div class="satis-card reveal">
+        <div class="satis-icon">🛒</div>
+        <div>
+          <div class="satis-title">Le supermarché Hipercor</div>
+          <div class="satis-desc">Paradoxalement cité positivement même dans les avis 1-2 étoiles sur l'outlet. Personnel aimable, produits frais, organisation correcte. Il constitue le seul îlot de satisfaction dans un centre globalement dégradé.</div>
+        </div>
+      </div>
+      <div class="satis-card reveal">
+        <div class="satis-icon">💎</div>
+        <div>
+          <div class="satis-title">Possibilité de bonnes affaires ponctuelles</div>
+          <div class="satis-desc">Avec de la patience et de la chance, certains clients reconnaissent avoir trouvé des articles de marque à des prix intéressants. Le potentiel existe — mais il n'est pas valorisé par l'organisation du magasin.</div>
+        </div>
+      </div>
+      <div class="satis-card reveal">
+        <div class="satis-icon">👔</div>
+        <div>
+          <div class="satis-title">Large choix de grandes tailles (XXL+)</div>
+          <div class="satis-desc">Plusieurs clients soulignent que c'est l'un des rares endroits où les grandes tailles sont disponibles en stock. Un créneau potentiel mal exploité et non mis en avant.</div>
+        </div>
+      </div>
+      <div class="satis-card reveal">
+        <div class="satis-icon">☕</div>
+        <div>
+          <div class="satis-title">La cafétéria intérieure</div>
+          <div class="satis-desc">Mentionnée positivement à plusieurs reprises comme un espace agréable avec un personnel attentionné et une offre correcte. Un point lumineux dans l'expérience globale du centre.</div>
+        </div>
+      </div>
+      <div class="satis-card reveal">
+        <div class="satis-icon">🤝</div>
+        <div>
+          <div class="satis-title">Certains employés exemplaires</div>
+          <div class="satis-desc">Malgré la tendance générale négative, quelques employés sont nommément cités et salués pour leur amabilité, leur professionnalisme et leur sens du service — prouvant que le potentiel humain existe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PITCH / CTA ── -->
+<section class="pitch-section section" id="action">
+  <div class="container">
+    <div class="pitch-inner">
+      <div class="reveal">
+        <div class="pitch-label">Comment passer à l'action ?</div>
+        <h2 class="pitch-title">🧐 Centralisez, modérez et répondez à tous vos avis clients</h2>
+        <p class="pitch-desc">Avis de marque, avis produits ou avis points de vente — gérez tout depuis une plateforme d'avis clients certifiée AFNOR. Transformez vos avis négatifs en opportunités d'amélioration concrètes.</p>
+        <a href="https://skeepers.io/fr/avis-verifies/" target="_blank" class="pitch-cta">
+          Découvrir Avis Vérifiés
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="pitch-features">
+          <div class="pitch-feat">
+            <div class="pitch-feat-icon">🎯</div>
+            <div>
+              <div class="pitch-feat-title">Collecte certifiée AFNOR</div>
+              <div class="pitch-feat-desc">Des avis authentiques, vérifiés et conformes aux normes françaises — une crédibilité maximale auprès de vos clients.</div>
+            </div>
+          </div>
+          <div class="pitch-feat">
+            <div class="pitch-feat-icon">💬</div>
+            <div>
+              <div class="pitch-feat-title">Modération & réponses centralisées</div>
+              <div class="pitch-feat-desc">Gérez tous vos avis (Google, produits, points de vente) depuis un seul tableau de bord. Répondez rapidement et professionnellement.</div>
+            </div>
+          </div>
+          <div class="pitch-feat">
+            <div class="pitch-feat-icon">📊</div>
+            <div>
+              <div class="pitch-feat-title">Analyses & rapports détaillés</div>
+              <div class="pitch-feat-desc">Identifiez les tendances, suivez l'évolution de votre réputation et prenez des décisions basées sur des données réelles.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Avis Vérifiés
+        <span>by Skeepers — Plateforme certifiée AFNOR</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://skeepers.io/fr/avis-verifies/" target="_blank" class="footer-link">skeepers.io/fr/avis-verifies</a>
+      </div>
+      <div class="footer-copy">Rapport généré à partir de données Google Maps publiques · 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Counter animation ──
+function animateCount(el, target, isFloat, suffix) {
+  let start = 0;
+  const duration = 1800;
+  const step = 16;
+  const steps = duration / step;
+  const increment = target / steps;
+  let current = 0;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    if (isFloat) {
+      el.textContent = current.toFixed(1).replace('.', ',');
+    } else if (suffix) {
+      el.textContent = Math.round(current) + suffix;
+    } else {
+      el.textContent = Math.round(current).toLocaleString('fr-FR');
+    }
+  }, step);
+}
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+
+// ── Distribution bar animation ──
+const distObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.dist-fill').forEach(fill => {
+        const pct = fill.dataset.pct;
+        setTimeout(() => { fill.style.width = pct + '%'; }, 200);
+      });
+      distObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.dist-list').forEach(el => distObserver.observe(el));
+
+// ── Hero stat animation on load ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    animateCount(document.getElementById('h-total'), 489, false, '');
+    animateCount(document.getElementById('h-google'), 11872, false, '');
+    animateCount(document.getElementById('h-avg'), 3.8, true, '');
+    animateCount(document.getElementById('h-topic'), 68, false, '%');
+
+    // Topic percentage
+    const topicPct = document.getElementById('topic-pct');
+    if (topicPct) {
+      let c = 0;
+      const t = setInterval(() => {
+        c += 2;
+        if (c >= 68) { c = 68; clearInterval(t); }
+        topicPct.textContent = c + '%';
+      }, 30);
+    }
+  }, 300);
+});
+</script>
+</body>
+</html>
